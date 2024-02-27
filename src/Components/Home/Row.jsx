@@ -1,7 +1,7 @@
 import React from "react";
 import "./Row.scss";
 import Card from "./Card";
-import { FaAngleRight, FaAngleLeft, FaArrowRightLong } from "react-icons/fa6";
+import { FaAngleRight, FaArrowRightLong } from "react-icons/fa6";
 
 const Row = ({ title, movie }) => {
   const handleScroll = () => {
@@ -11,7 +11,7 @@ const Row = ({ title, movie }) => {
     <div className="movie-row">
       <div className="row-header">
         <h2>{title}</h2>
-        <a href="#" className="viewall">View All <FaArrowRightLong /></a>
+        <a href="/" className="viewall">View All <FaArrowRightLong /></a>
       </div>
       <div className="card-row">
         {movie.map((movie, index) => (

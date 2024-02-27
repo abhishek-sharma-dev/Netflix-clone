@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import Row from "./Row";
 import axios from "axios";
@@ -19,8 +18,7 @@ function Home() {
   const [randomBannerImg, setRandomBannerImg] = useState("");
   const [name, setName] = useState([]);
   const [link, setLink] = useState([]);
-
-
+  
   useEffect(() => {
     const fetchData = async (url, setState) => {
       const {

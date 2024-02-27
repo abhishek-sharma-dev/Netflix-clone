@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import Row from "./Row";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Banner from "./Banner";
 
 

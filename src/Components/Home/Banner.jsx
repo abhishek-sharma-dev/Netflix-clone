@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Banner.scss";
 import axios from "axios";
-import { FaPlay, FaStar ,FaRegStar} from "react-icons/fa6";
+import { FaPlay, FaStar } from "react-icons/fa6";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const API_KEY = "007a2d5309887e843e4f963c9c6bb243";

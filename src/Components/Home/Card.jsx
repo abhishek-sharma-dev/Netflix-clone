@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Card.scss";
 import { FaPlay, FaPlus } from "react-icons/fa6";
-import TrailerVideoPanel from "./TrailerVideoPanel";
-import movieTrailer from "movie-trailer";
+// import TrailerVideoPanel from "./TrailerVideoPanel";
+// import movieTrailer from "movie-trailer";
 
 const styleBackdropImgNotThere = {
   color: "white",
@@ -14,7 +14,6 @@ const styleBackdropImgNotThere = {
 
 const Card = ({ title, overview, img, backdropImg, movie }) => {
   const imgUrl = "https://image.tmdb.org/t/p/original";
-  const [trailerUrl, setTrailerUrl] = useState("")
   
   // const handleShowVideo = () => {
   //   if (trailerUrl) {
