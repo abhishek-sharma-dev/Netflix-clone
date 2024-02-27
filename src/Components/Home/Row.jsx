@@ -1,17 +1,26 @@
 import React from "react";
 import "./Row.scss";
 import Card from "./Card";
-import { FaAngleRight, FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Row = ({ title, movie }) => {
-  const handleScroll = () => {
-    
-  }
-   return (
+
+  const viewallCards = () => {
+    console.log(movie);
+  };
+
+  return (
     <div className="movie-row">
       <div className="row-header">
         <h2>{title}</h2>
-        <a href="/" className="viewall">View All <FaArrowRightLong /></a>
+        <Link
+          to="/viewall"
+          className="viewall"
+          onClick={viewallCards}
+        >
+          View All <FaArrowRightLong />
+        </Link>
       </div>
       <div className="card-row">
         {movie.map((movie, index) => (
@@ -22,12 +31,9 @@ const Row = ({ title, movie }) => {
             img={movie.poster_path || movie.profile_path}
             backdropImg={movie.backdrop_path}
             movie={movie}
+            // viewallCardPage={viewallCardPage}
           />
         ))}
-
-        <div className="forward-scroll" onClick={handleScroll}>
-          <FaAngleRight />
-        </div>
       </div>
     </div>
   );

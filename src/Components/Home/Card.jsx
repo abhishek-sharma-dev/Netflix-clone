@@ -1,8 +1,7 @@
 import React from "react";
 import "./Card.scss";
 import { FaPlay, FaPlus } from "react-icons/fa6";
-// import TrailerVideoPanel from "./TrailerVideoPanel";
-// import movieTrailer from "movie-trailer";
+// import ViewallCardsPage from "./ViewallCardsPage";
 
 const styleBackdropImgNotThere = {
   color: "white",
@@ -15,27 +14,10 @@ const styleBackdropImgNotThere = {
 const Card = ({ title, overview, img, backdropImg, movie }) => {
   const imgUrl = "https://image.tmdb.org/t/p/original";
   
-  // const handleShowVideo = () => {
-  //   if (trailerUrl) {
-  //     setTrailerUrl('')
-  //   }else{
-  //     movieTrailer(title)
-  //     .then(url => {
-  //       // https://www.youtube.com/watch?v=XtMThy8QKqU  ---> sample-url
-  //       const urlParams = new URLSearchParams(new URL(url).search)
-  //       console.log(urlParams.get('v'));
-
-
-  //       setTrailerUrl(urlParams.get('v'))
-  //     }).catch(error => console.log(error))
-  //   }
-  // };
-
   return (
     <>
-    {/* <TrailerVideoPanel trailerUrlId={trailerUrl}/> */}
-    
       <div className="cards">
+        {/* {movie === null ? <ViewallCardsPage userListData={userList}/> : null} */}
         <div className="card">
           <div className="card-img">
             <img src={`${imgUrl}/${img}`} alt="poster" />
@@ -52,11 +34,13 @@ const Card = ({ title, overview, img, backdropImg, movie }) => {
             <div className="popupCard-details">
               <h3>{title}</h3>
 
+              {/* watchNow button*/}
               <div className="card-btn">
                 <button className="watchNow-btn">
                   <FaPlay /> Watch Now
                 </button>
 
+                {/* watchlist button*/}
                 <button className="watchlist-btn">
                   <FaPlus />
                 </button>

@@ -5,7 +5,7 @@
     &::-webkit-scrollbar {
         display: none;
     }
-    
+
     >.row-header {
         display: flex;
         justify-content: space-between;
@@ -22,15 +22,18 @@
             transition: 0.3s ease-in;
             font-size: 16px;
             gap: 0.5rem;
-            >svg{
+
+            >svg {
                 opacity: 0;
                 transform: translateX(-25px);
                 transition: 0.3s ease-in;
                 color: red;
             }
+
             &:hover {
                 color: red;
-                svg{
+
+                svg {
                     opacity: 1;
                     transform: translateX(0);
                 }
@@ -40,14 +43,16 @@
     }
 
     >.card-row {
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(12.45rem, 1fr));
+        gap: 1rem;
         margin: 1rem 0;
         overflow-x: clip;
-        gap: 1rem;
         &::-webkit-scrollbar {
             display: none;
         }
-        
+
 
         .forward-scroll {
             opacity: 0;
@@ -59,18 +64,21 @@
             position: absolute;
             right: 0;
             z-index: 1;
-            background: linear-gradient(90deg, transparent ,#0f0f0f 80%, #0f0f0f);
+            background: linear-gradient(90deg, transparent, #0f0f0f 80%, #0f0f0f);
             color: white;
             transition: 0.3s all ease-in-out;
             cursor: pointer;
+
             >svg {
                 font-size: 1.5rem;
             }
-            &:hover{
-                background: linear-gradient(90deg, transparent ,#0f0f0f, #0f0f0f);
+
+            &:hover {
+                background: linear-gradient(90deg, transparent, #0f0f0f, #0f0f0f);
             }
         }
     }
+
     &:hover .card-row .forward-scroll {
         opacity: 1;
     }

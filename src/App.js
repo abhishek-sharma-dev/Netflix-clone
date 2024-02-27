@@ -7,6 +7,7 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/Login/SignUp";
 import Tvshows from "./Components/Home/Tvshows";
 import Movies from "./Components/Home/Movies";
+import ViewallCardsPage from "./Components/Home/ViewallCardsPage";
 // import { Footer } from "./Components/Footer/Footer";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/tvshows" element={<Tvshows />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/viewall" element={<ViewallCardsPage/>}/>
           </Routes>
         </div>
         {/* <Footer /> */}
