@@ -65,6 +65,7 @@ function Banner() {
           <h1>{randomBannerMovie.title}</h1>
           <span className="banner-movie-rating">Rating: <FaStar/>{randomBannerMovie.vote_average}/10</span>
           <p>{randomBannerMovie.overview}</p>
+          
           <div className="banner-genre">
             {matchedGenresNames.map((genreName, index) => (
               <div className="matched-genre-names" key={index}>
