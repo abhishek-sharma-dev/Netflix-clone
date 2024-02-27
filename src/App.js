@@ -13,6 +13,7 @@ function App() {
   const [inputValues, setInputValue] = useState();
 
   const handleLogin = (loginData) => {
+    console.log(inputValues);
     setInputValue(loginData);
   };
 
