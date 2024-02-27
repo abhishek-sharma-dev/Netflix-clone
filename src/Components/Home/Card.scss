@@ -1,0 +1,135 @@
+$bg-color: #0F0F0F;
+$light-bgColor: #181818;
+$btn-bgColor: #D8D9DA;
+$primary-red: #ff0000;
+
+.cards {
+
+    button {
+        width: 100%;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        background-color: $btn-bgColor;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: 0.3s all ease-in-out;
+    }
+
+    >.card {
+        width: 13rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+
+        >.card-img {
+            >img {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        &:hover {
+            z-index: 2;
+            overflow: visible;
+            >.popupCard {
+                opacity: 1;
+                width: 20rem;
+                height: 25rem;
+                transition: 0.5s ease-in-out;
+            }
+        }
+        
+        >.popupCard {
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            width: 15rem;
+            height: 100%;
+            background-color: $light-bgColor;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 0;
+            border-radius: 5px;
+            overflow: hidden;
+
+            >.popupCard-bgImg {
+                width: 100%;
+
+                >img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            >.popupCard-details {
+                position: relative;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: white;
+                box-shadow: 0px -10px 20px 14px #181818;
+                gap: 0.5rem;
+                padding: 0px 1rem 1rem;
+                >h3{
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                     overflow: hidden; 
+                }
+
+                >.card-btn {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    gap: 0.8rem;
+                    align-items: center;
+                }
+
+                .watchNow-btn {
+                    width: 100%;
+                    svg {
+                        margin-right: 0.5rem;
+                    }
+                    &:hover {
+                        transform: scale(1.012);
+                    }
+                }
+
+
+                .watchlist-btn {
+                    width: 15%;
+                    padding: 0.7rem;
+
+                    svg {
+                        font-size: 14px;
+                    }
+                    &:hover {
+                        background-color: red;
+                        color: white;
+                    }
+                }
+
+                >.movie-overview{
+                    >span{
+                        display: -webkit-box;
+                        -webkit-line-clamp: 5;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+
+    }
+
+}

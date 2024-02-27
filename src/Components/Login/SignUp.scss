@@ -1,0 +1,202 @@
+$bg-color: #0F0F0F;
+$light-bgColor: #181818;
+$input-barColor: rgb(24 24 24 / 20%);
+$primary-red: #fe2a2a;
+$hover-red: rgba(255, 19, 19, 0.921);
+$glossy-background: rgba(0, 0, 0, 0.7);
+
+.signUpbackground-img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/loginBg-img-2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.signup-page {
+    min-height: 90vh;
+    background-color: $bg-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >.signup-container {
+        width: 23rem;
+        height: max-content;
+        background-color: $glossy-background;
+        border-radius: 5px;
+        padding: 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        z-index: 1;
+        backdrop-filter: blur(2px);
+
+        >h1 {
+            // color: white;
+            text-align: center;
+            color: transparent;
+            background-image: linear-gradient(90deg, white, red);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        >.input-area {
+            color: white;
+            display: flex;
+            flex-direction: column;
+
+            >.input-field {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1.5rem;
+
+                >input {
+                    padding: 1.3rem 1rem 1rem 1rem;
+                    font-size: 14px;
+                    border-radius: 3px;
+                    background-color: $input-barColor;
+                    border: 1px rgb(128 128 128 / 45%) solid;
+                    color: white;
+                    letter-spacing: 1px;
+                    outline: none;
+
+                    &:hover,
+                    &:focus {
+                        background-color: rgb(24 24 24 / 50%);
+                    }
+
+                    &:valid~label,
+                    &:focus~label {
+                        font-weight: 600;
+                        color: $primary-red;
+                        transform: translateY(-13px);
+                        font-size: 12px;
+                    }
+                }
+
+                >label {
+                    position: absolute;
+                    color: white;
+                    padding: 1rem;
+                    pointer-events: none;
+                    letter-spacing: 1px;
+                    transition: 0.2s all ease-in-out
+                }
+
+                >span {
+                    display: flex;
+                    align-items: center;
+                    font-size: 12px;
+                    color: $primary-red;
+                    margin-top: 3px;
+
+                    >svg {
+                        font-size: 16px;
+                        margin-right: 3px;
+                    }
+                }
+                >.password-notice{
+                    font-size: 12px;
+                    color: $primary-red;
+                    margin-top: 3px;
+                    position: relative;
+                    
+                    >svg{
+                        font-size: 16px;
+                        margin-right: 3px;
+                        position: absolute;
+                        left: 0;
+                        top: 1px;
+                    }
+                    >span{
+                        padding-left: 18px;
+                    }
+                }
+
+                >.text-field {
+                    font-size: 12px;
+
+                    >a {
+                        &:hover {
+                            color: $primary-red;
+                        }
+                    }
+                }
+
+                // unhide password symbol--->
+                >.unhide-password {
+                    position: absolute;
+                    color: $primary-red;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    border-radius: 50px;
+                    right: 10px;
+                    top: 18px;
+                    transition: 0.2s all ease-in-out;
+
+                    &:hover {
+                        background-color: $primary-red;
+                        color: white;
+                    }
+
+                    >svg {
+                        margin: 3px;
+                    }
+
+                }
+
+            }
+
+            >.signup-btn {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+                transition: 0.2s all ease-in-out;
+
+                &:active {
+                    transform: scale(0.98);
+                }
+
+                >.btn {
+                    width: 100%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.5rem 1rem;
+                    background-color: $primary-red;
+                    color: white;
+                    border: none;
+                    border-radius: 3px;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+
+            >.login-field {
+                font-size: 14px;
+                text-align: center;
+                margin-bottom: 1rem;
+
+                >a {
+                    &:hover {
+                        color: $primary-red;
+                    }
+                }
+            }
+        }
+    }
+
+    >.text-field {
+        font-size: 16px;
+    }
+
+}

@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { useState } from "react";
+import "./App.scss";
+import Home from "./Components/Home/Home";
+import Navbar from "./Components/Header/Navbar";
+import Login from "./Components/Login/Login";
+import SignUp from "./Components/Login/SignUp";
+import Tvshows from "./Components/Home/Tvshows";
+import Movies from "./Components/Home/Movies";
+// import { Footer } from "./Components/Footer/Footer";
 
 function App() {
+  const [isloggedin, setIsloggedin] = useState(false);
+  const [inputValues, setInputValue] = useState();
+
+  const handleLogin = (loginData) => {
+    setInputValue(loginData);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <div className="container">
+          <Routes>
+            {/* {isloggedin ?
+          <> */}
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/tvshows" element={<Tvshows />} />
+            {/* </>
+          : 
+          <> */}
+            {/* <Route path="*" element={<Navigate to="/login" />} /> */}
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<SignUp />} />
+            {/* </>
+          } */}
+          </Routes>
+        </div>
+        {/* <Footer /> */}
+      </Router>
+    </>
   );
 }
 

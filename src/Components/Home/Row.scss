@@ -1,0 +1,77 @@
+.movie-row {
+    margin-bottom: 2rem;
+    position: relative;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    >.row-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        >h2 {
+            color: white;
+        }
+
+        >.viewall {
+            transition: 0.3s ease-out;
+            display: flex;
+            align-items: center;
+            transition: 0.3s ease-in;
+            font-size: 16px;
+            gap: 0.5rem;
+            >svg{
+                opacity: 0;
+                transform: translateX(-25px);
+                transition: 0.3s ease-in;
+                color: red;
+            }
+            &:hover {
+                color: red;
+                svg{
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+
+    }
+
+    >.card-row {
+        display: flex;
+        margin: 1rem 0;
+        overflow-x: clip;
+        gap: 1rem;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+
+        .forward-scroll {
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 19.5rem;
+            width: 8%;
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            background: linear-gradient(90deg, transparent ,#0f0f0f 80%, #0f0f0f);
+            color: white;
+            transition: 0.3s all ease-in-out;
+            cursor: pointer;
+            >svg {
+                font-size: 1.5rem;
+            }
+            &:hover{
+                background: linear-gradient(90deg, transparent ,#0f0f0f, #0f0f0f);
+            }
+        }
+    }
+    &:hover .card-row .forward-scroll {
+        opacity: 1;
+    }
+}
