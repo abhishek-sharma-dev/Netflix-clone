@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import "./App.scss";
 import Home from "./Components/Home/Home";
@@ -15,7 +10,6 @@ import Movies from "./Components/Home/Movies";
 // import { Footer } from "./Components/Footer/Footer";
 
 function App() {
-  const [isloggedin, setIsloggedin] = useState(false);
   const [inputValues, setInputValue] = useState();
 
   const handleLogin = (loginData) => {
@@ -28,19 +22,11 @@ function App() {
         <Navbar />
         <div className="container">
           <Routes>
-            {/* {isloggedin ?
-          <> */}
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/tvshows" element={<Tvshows />} />
-            {/* </>
-          : 
-          <> */}
-            {/* <Route path="*" element={<Navigate to="/login" />} /> */}
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<SignUp />} />
-            {/* </>
-          } */}
           </Routes>
         </div>
         {/* <Footer /> */}

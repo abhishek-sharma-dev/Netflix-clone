@@ -16,8 +16,6 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
   const [randomBannerImg, setRandomBannerImg] = useState("");
-  const [name, setName] = useState([]);
-  const [link, setLink] = useState([]);
   
   useEffect(() => {
     const fetchData = async (url, setState) => {
@@ -38,26 +36,6 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchGenres = async () => {
-      const {
-        data: { genres },
-      } = await axios.get(
-        `${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
-      );
-      const allMoviesLink = genres.map((genre) => `${genreUrl}${genre.id}`);
-      const genreName = genres.map((genre) => genre.name);
-
-      const genreDataPromises = allMoviesLink.map((link) => axios.get(link));
-      const genreDataResponses = await Promise.all(genreDataPromises);
-
-      setLink(genreDataResponses);
-      setName(genreName);
-    };
-
-    fetchGenres();
-  }, []);
-
-  useEffect(() => {
     const bannerImgPath = movies.map(
       (moviesBanner) => moviesBanner.backdrop_path
     );
@@ -73,8 +51,6 @@ function Home() {
         <div className="movie-list">
           <Row title={"Trending"} movie={movies} />
           <Row title={"Tv Shows"} movie={tvShows} />
-          {/* {name.map((name, index) => 
-            <Row key={index} title={name} movie={link} />)} */}
         </div>
       </div>
     </>

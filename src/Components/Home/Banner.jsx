@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Banner.scss";
 import axios from "axios";
-import { FaPlay, FaStar } from "react-icons/fa6";
+import { FaPlay, FaStar } from "react-icons/fa";
 import { IoRemoveOutline } from "react-icons/io5";
 
 const API_KEY = "007a2d5309887e843e4f963c9c6bb243";
@@ -48,7 +48,7 @@ function Banner() {
   }, [movies]);
 
   useEffect(() => {
-    if (randomBannerMovie && randomBannerMovie.genre_ids && genreId_Name.length > 0) {
+    if (randomBannerMovie && randomBannerMovie.backdrop_path && genreId_Name.length > 0) {
       const matchedGenres = genreId_Name.filter(bannerMovie => randomBannerMovie.genre_ids.includes(bannerMovie.id));
       const matchedGenreNames = matchedGenres.map(genre => genre.name);
       setMatchedGenresNames(matchedGenreNames);
@@ -65,16 +65,14 @@ function Banner() {
           <h1>{randomBannerMovie.title}</h1>
           <span className="banner-movie-rating">Rating: <FaStar/>{randomBannerMovie.vote_average}/10</span>
           <p>{randomBannerMovie.overview}</p>
-          <div className="bannerGener">
+          <div className="banner-genre">
             {matchedGenresNames.map((genreName, index) => (
-              <div className="matchedGenresNames" key={index}>
+              <div className="matched-genre-names" key={index}>
                 <span>{genreName}</span>
                 {index !== matchedGenresNames.length - 1 && <IoRemoveOutline/>}
               </div>
-
             ))}
           </div>
-          
           <button className="watch-now"><FaPlay /> Watch Now</button>
         </div>
       )}
