@@ -30,6 +30,20 @@ $primary-red: #ff0000;
         position: relative;
         cursor: pointer;
 
+        >.watchList-tag{
+            position: absolute;
+            top: -3px;
+            right: -2px;
+            >svg{
+                color: $primary-red;
+                font-size: 34px;
+            }
+        }
+
+        >.watchList-removedTag{
+            display: none;
+        }
+
         >.card-img {
             >img {
                 width: 100%;
@@ -93,31 +107,41 @@ $primary-red: #ff0000;
                     width: 100%;
                     gap: 0.8rem;
                     align-items: center;
-                }
 
-                .watchNow-btn {
-                    width: 100%;
-                    svg {
-                        margin-right: 0.5rem;
-                    }
-                    &:hover {
-                        transform: scale(1.012);
-                    }
-                }
-
-
-                .watchlist-btn {
-                    width: 15%;
-                    padding: 0.7rem;
-
-                    svg {
-                        font-size: 14px;
-                    }
-                    &:hover {
-                        background-color: red;
+                    >.watchlisted{
+                        background-color: $primary-red;
                         color: white;
                     }
+                    >.unwatchlisted{
+                        background-color: $btn-bgColor;
+                    }
+
+                    >.watchNow-btn {
+                        width: 100%;
+                        svg {
+                            margin-right: 0.5rem;
+                        }
+                        &:hover {
+                            transform: scale(1.012);
+                        }
+                    }
+    
+    
+                    >.watchlist-btn {
+                        width: 15%;
+                        padding: 0.7rem;
+    
+                        svg {
+                            font-size: 14px;
+                        }
+                        &:hover {
+                            background-color: red;
+                            color: white;
+                        }
+                    }
                 }
+
+                
 
                 >.movie-overview{
                     >span{

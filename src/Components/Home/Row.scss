@@ -45,7 +45,7 @@
     >.card-row {
         display: grid;
         grid-auto-flow: column;
-        grid-template-columns: repeat(auto-fit, minmax(12.45rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
         gap: 1rem;
         margin: 1rem 0;
         overflow-x: clip;

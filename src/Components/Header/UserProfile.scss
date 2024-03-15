@@ -1,0 +1,47 @@
+.user-profile {
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+
+    >.visible{
+        display: block;
+    }
+    >.hidden{
+        display: none;
+    }
+
+    >.profile-content {
+        width: 10rem;
+        background-color: #181818;
+        position: absolute;
+        right: 0px;
+        top: 35px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        >ul {
+            list-style: none;
+
+            >a li:hover{
+                background-color: #262626;
+            }
+
+            >a li {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                padding: 0.5rem 1rem;
+            }
+
+
+        }
+    }
+}

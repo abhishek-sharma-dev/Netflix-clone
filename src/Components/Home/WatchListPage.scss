@@ -1,0 +1,16 @@
+.watchlist-container{
+    padding: 1.5rem 1rem;
+    display: flex;
+    >.movie-row {
+        margin: 3rem 0 2rem;
+    }
+
+    >.movie-row > .card-row{
+        display: flex;
+        flex-wrap: wrap;
+
+        >.cards >.card{
+            width: 12.4rem;
+        }
+    }
+}

@@ -26,19 +26,25 @@ function Banner() {
 
       setState(results);
     };
+    
     fetchData(
       `${URL}/trending/${movie}/day?api_key=${API_KEY}&language=en-US&page=1`,
       setMovies
     );
 
     const fetchGenres = async () => {
-      const { data: { genres } } = await axios.get(`${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+      const {
+        data: { genres },
+      } = await axios.get(
+        `${URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+      );
       setGenreId_Name(genres);
     };
     fetchGenres();
   }, []);
 
   useEffect(() => {
+    console.log("movies >>", movies)
     const randomIndex = Math.floor(Math.random() * movies.length);
     const randomMovie = movies[randomIndex];
     setRandomBannerMovie(randomMovie);
@@ -48,33 +54,44 @@ function Banner() {
   }, [movies]);
 
   useEffect(() => {
-    if (randomBannerMovie && randomBannerMovie.backdrop_path && genreId_Name.length > 0) {
-      const matchedGenres = genreId_Name.filter(bannerMovie => randomBannerMovie.genre_ids.includes(bannerMovie.id));
-      const matchedGenreNames = matchedGenres.map(genre => genre.name);
+    if (
+      randomBannerMovie &&
+      randomBannerMovie.backdrop_path &&
+      genreId_Name.length > 0
+    ) {
+      const matchedGenres = genreId_Name.filter((bannerMovie) =>
+        randomBannerMovie.genre_ids.includes(bannerMovie.id)
+      );
+      const matchedGenreNames = matchedGenres.map((genre) => genre.name);
       setMatchedGenresNames(matchedGenreNames);
     }
   }, [randomBannerMovie, genreId_Name]);
 
   return (
     <>
-      <Link to="/" className="banner-img">
+      <div className="banner-img">
         <img src={randomBannerImg} alt="poster" />
-      </Link>
+      </div>
       {randomBannerMovie && randomBannerMovie.backdrop_path && (
         <div className="banner-movie-detail">
           <h1>{randomBannerMovie.title}</h1>
-          <span className="banner-movie-rating">Rating: <FaStar/>{randomBannerMovie.vote_average}/10</span>
+          <span className="banner-movie-rating">
+            Rating: <FaStar />
+            {randomBannerMovie.vote_average}/10
+          </span>
           <p>{randomBannerMovie.overview}</p>
-          
+
           <div className="banner-genre">
             {matchedGenresNames.map((genreName, index) => (
               <div className="matched-genre-names" key={index}>
                 <span>{genreName}</span>
-                {index !== matchedGenresNames.length - 1 && <IoRemoveOutline/>}
+                {index !== matchedGenresNames.length - 1 && <IoRemoveOutline />}
               </div>
             ))}
           </div>
-          <button className="watch-now"><FaPlay /> Watch Now</button>
+          <button className="watch-now">
+            <FaPlay /> Watch Now
+          </button>
         </div>
       )}
     </>

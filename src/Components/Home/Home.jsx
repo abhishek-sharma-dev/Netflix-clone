@@ -13,6 +13,7 @@ const movie = "movie";
 const tv = "tv";
 
 function Home() {
+  console.log("home")
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
   const [randomBannerImg, setRandomBannerImg] = useState("");
@@ -30,7 +31,7 @@ function Home() {
       setMovies
     );
     fetchData(
-      `${URL}/trending//${tv}/day?api_key=${API_KEY}&language=en-US&page=1`,
+      `${URL}/trending/${tv}/day?api_key=${API_KEY}&language=en-US&page=1`,
       setTvShows
     );
   }, []);
@@ -49,7 +50,7 @@ function Home() {
       <Banner />
       <div className="home-section">
         <div className="movie-list">
-          <Row title={"Trending"} movie={movies} />
+          <Row title={"Trending Movies"} movie={movies} />
           <Row title={"Tv Shows"} movie={tvShows} />
         </div>
       </div>

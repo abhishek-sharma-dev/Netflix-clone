@@ -2,9 +2,10 @@ import React from "react";
 import "./Row.scss";
 import Card from "./Card";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Row = ({ title, movie }) => {
+  const urlPathLoction = useLocation()
 
   const viewallCards = () => {
     console.log(movie);
@@ -19,7 +20,9 @@ const Row = ({ title, movie }) => {
           className="viewall"
           onClick={viewallCards}
         >
-          View All <FaArrowRightLong />
+          {urlPathLoction.pathname !== '/myList' && 'View All'}
+          {urlPathLoction.pathname !== '/myList' && <FaArrowRightLong />}
+          
         </Link>
       </div>
       <div className="card-row">
