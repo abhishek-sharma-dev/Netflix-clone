@@ -7,7 +7,6 @@ import Banner from "./Banner";
 const API_KEY = "007a2d5309887e843e4f963c9c6bb243";
 const imgUrl = "https://image.tmdb.org/t/p/original";
 const URL = "https://api.themoviedb.org/3";
-const genreUrl = `${URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=`;
 
 const movie = "movie";
 const tv = "tv";

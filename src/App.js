@@ -11,12 +11,11 @@ import ViewallCardsPage from "./Components/Home/ViewallCardsPage";
 // import { Footer } from "./Components/Footer/Footer";
 import { fetchDataFromApi } from "./utils/api";
 import { getImageUrl, getGeners, getPopularMovies } from "./Slice/homeSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import WatchListPage from "./Components/Home/WatchListPage";
 
 function App() {
   const dispatch = useDispatch();
-  // const { url } = useSelector((store) => store.data)
 
   useEffect(() => {
     const fetchImageUrl = () => {
