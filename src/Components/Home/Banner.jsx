@@ -89,7 +89,7 @@ function Banner() {
             ))}
           </div>
           <button className="watch-now">
-            <FaPlay /> Watch Now
+            <FaPlay /> Watch Trailer
           </button>
         </div>
       )}
