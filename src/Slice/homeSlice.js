@@ -10,6 +10,7 @@ export const homeSlice = createSlice({
     },
     popularMovies: [],
     watchlist: [],
+    trailerVideo: '',
   },
   reducers: {
     getImageUrl: (state, action) => {
@@ -28,6 +29,9 @@ export const homeSlice = createSlice({
     getWatchList: (state, action) => {
       state.watchlist = action.payload
     },
+    getTrailerVideo: (state, action) => {
+      state.trailerVideo = action.payload
+    },
   },
 });
 
@@ -36,6 +40,7 @@ export const {
   getGeners,
   getPopularMovies,
   getWatchList,
+  getTrailerVideo
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

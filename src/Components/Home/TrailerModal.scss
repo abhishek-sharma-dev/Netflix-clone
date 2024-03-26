@@ -1,0 +1,57 @@
+
+.blur-background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+
+    >.trailerVideo-container {
+        width: 80%;
+        height: 90%;
+        background-color: #181818;
+        padding: 0.5rem 1rem;
+        color: white;
+        border-radius: 4px;
+        
+    
+        >.header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 24px;
+            margin-bottom: 0.5rem;
+    
+            >.title {
+                font-weight: 600;
+            }
+    
+            >.cancel-btn {
+                font-size: 24px;
+                cursor: pointer;
+                transform: rotate(45deg);
+            }
+        }
+    
+        >.videoPlayer {
+            display: flex;
+            width: 100%;
+            height: 90%;
+            align-items: center;
+            justify-content: center;
+    
+            >iframe {
+                width: 100%;
+                height: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+    
+}

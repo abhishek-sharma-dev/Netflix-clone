@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Card.scss";
 import { FaPlay, FaPlus } from "react-icons/fa6";
 import { IoBookmarkSharp } from "react-icons/io5";
-import { getWatchList } from "../../Slice/homeSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { getWatchList, getTrailerVideo } from "../../Slice/homeSlice";
+import { useDispatch } from "react-redux";
+import { fetchDataFromApi } from "../../utils/api";
 
 const imgUrl = "https://image.tmdb.org/t/p/original";
 const styleBackdropImgNotThere = {
@@ -33,9 +34,9 @@ const Card = ({ title, overview, img, backdropImg, movie }) => {
       setWatchlisted(false);
     }
   };
-  
+
   const data = localStorage.getItem("watchlistData");
-  let storeData = data ? JSON.parse(data) : []
+  let storeData = data ? JSON.parse(data) : [];
   const storeDataIndex = storeData.findIndex((item) => item.id === movie.id);
   useEffect(() => {
     if (storeDataIndex !== -1) {
@@ -47,58 +48,81 @@ const Card = ({ title, overview, img, backdropImg, movie }) => {
     }
   }, [storeDataIndex]);
 
+
+  const trailetVideo = (movie) => {
+    let mediaType = movie.media_type === "movie" ? "movie" : "tv";
+    let movieId = movie.id
+    trailerVideoData(mediaType, movieId)
+  };
+
+    const trailerVideoData = (mediaType, movieId) => {
+      fetchDataFromApi(`/movie/${movieId}/videos`).then((res) => {
+        const trailerData = res.results.filter(
+          (data) => data.name === "Official Trailer"
+        );
+        const { key } = trailerData[0];
+        dispatch(getTrailerVideo('https://www.youtube.com/watch?v=' + key))
+      }).catch(error => {
+        dispatch(getTrailerVideo('Trailer Video is not available'))
+        console.error("Error fetching trailer data:", error);
+      })
+    };
+// console.log(movie);    
+// || "Official Trailer [ENG SUB]"
+
   return (
     <>
-      <div className="cards">
-        <div className="card">
-          <div
-            className={`watchList-tag ${
-              watchlisted ? "watchList-tag" : "watchList-removedTag"
-            } `}
-          >
-            <IoBookmarkSharp />
-          </div>
-          <div className="card-img">
-            <img src={`${imgUrl}/${img}`} alt="poster" />
-          </div>
+      <div className="card">
+        <div
+          className={`watchList-tag ${
+            watchlisted ? "watchList-tag" : "watchList-removedTag"
+          } `}
+        >
+          <IoBookmarkSharp />
+        </div>
+        <div className="card-img">
+          <img src={`${imgUrl}/${img}`} alt="poster" />
+        </div>
 
-          <div className="popupCard">
-            <div className="popupCard-bgImg">
-              {backdropImg ? (
-                <img src={`${imgUrl}/${backdropImg}`} alt="" />
-              ) : (
-                <h3 style={styleBackdropImgNotThere}>Image Not Available</h3>
-              )}
+        <div className="popupCard">
+          <div className="popupCard-bgImg">
+            {backdropImg ? (
+              <img src={`${imgUrl}/${backdropImg}`} alt="" />
+            ) : (
+              <h3 style={styleBackdropImgNotThere}>Image Not Available</h3>
+            )}
+          </div>
+          <div className="popupCard-details">
+            <h3>{title}</h3>
+
+            {/* watchNow button */}
+            <div className="card-btn">
+              <button
+                className="watchNow-btn"
+                onClick={() => trailetVideo(movie)}
+              >
+                <FaPlay /> Watch Trailer
+              </button>
+
+              {/* watchlist button*/}
+              <button
+                className={`watchlist-btn ${
+                  watchlisted ? "watchlisted" : "unwatchlisted"
+                }`}
+                onClick={() => addToWatchList(movie)}
+              >
+                {watchlisted ? <IoBookmarkSharp /> : <FaPlus />}
+              </button>
             </div>
-            <div className="popupCard-details">
-              <h3>{title}</h3>
 
-              {/* watchNow button*/}
-              <div className="card-btn">
-                <button className="watchNow-btn">
-                  <FaPlay /> Watch Trailer
-                </button>
-
-                {/* watchlist button*/}
-                <button
-                  className={`watchlist-btn ${
-                    watchlisted ? "watchlisted" : "unwatchlisted"
-                  }`}
-                  onClick={() => addToWatchList(movie)}
-                >
-                 {watchlisted ? <IoBookmarkSharp/> :  <FaPlus />} 
-                </button>
-              </div>
-
-              <div className="movie-overview">
-                {overview ? (
-                  <span>{overview}</span>
-                ) : (
-                  <span style={{ marginTop: "3rem" }}>
-                    Overview Not Available!.
-                  </span>
-                )}
-              </div>
+            <div className="movie-overview">
+              {overview ? (
+                <span>{overview}</span>
+              ) : (
+                <span style={{ marginTop: "3rem" }}>
+                  Overview Not Available!.
+                </span>
+              )}
             </div>
           </div>
         </div>

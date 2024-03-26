@@ -44,7 +44,6 @@ function Banner() {
   }, []);
 
   useEffect(() => {
-    console.log("movies >>", movies)
     const randomIndex = Math.floor(Math.random() * movies.length);
     const randomMovie = movies[randomIndex];
     setRandomBannerMovie(randomMovie);

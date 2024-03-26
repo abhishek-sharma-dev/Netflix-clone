@@ -8,11 +8,12 @@ import SignUp from "./Components/Login/SignUp";
 import Tvshows from "./Components/Home/Tvshows";
 import Movies from "./Components/Home/Movies";
 import ViewallCardsPage from "./Components/Home/ViewallCardsPage";
-// import { Footer } from "./Components/Footer/Footer";
 import { fetchDataFromApi } from "./utils/api";
 import { getImageUrl, getGeners, getPopularMovies } from "./Slice/homeSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import WatchListPage from "./Components/Home/WatchListPage";
+import TrailerModal from "./Components/Home/TrailerModal";
+// import { Footer } from "./Components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,18 +38,21 @@ function App() {
     const genereData = () => {
       Promise.all([
         fetchDataFromApi("/genre/movie/list"),
-        fetchDataFromApi("/genre/tv/list")
-      ]).then(([movieRes, tvRes]) => {
-        dispatch(getGeners({
-          movieGeneres: movieRes.genres || [], 
-          tvGeneres: tvRes.genres || [] 
-        }));
-      }).catch(error => {
-        console.error("Error fetching genres:", error); // Log any errors
-      });
+        fetchDataFromApi("/genre/tv/list"),
+      ])
+        .then(([movieRes, tvRes]) => {
+          dispatch(
+            getGeners({
+              movieGeneres: movieRes.genres || [],
+              tvGeneres: tvRes.genres || [],
+            })
+          );
+        })
+        .catch((error) => {
+          console.error("Error fetching genres:", error); // Log any errors
+        });
     };
-    genereData()
-    
+    genereData();
   }, []);
 
   const [inputValues, setInputValue] = useState();
@@ -57,11 +61,13 @@ function App() {
     console.log(inputValues);
     setInputValue(loginData);
   };
-
+  
   return (
     <>
       <Router>
+
         <Navbar />
+        <TrailerModal/>
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -74,7 +80,7 @@ function App() {
             <Route path="/viewall" element={<ViewallCardsPage />} />
           </Routes>
         </div>
-        {/* <Footer /> */}
+        {/* <Footer/> */}
       </Router>
     </>
   );
