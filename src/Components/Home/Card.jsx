@@ -56,7 +56,14 @@ const Card = ({ title, overview, img, backdropImg, movie }) => {
   };
 
     const trailerVideoData = (mediaType, movieId) => {
-      fetchDataFromApi(`/movie/${movieId}/videos`).then((res) => {
+      let endpoint = ''
+      if (mediaType === 'tv') {
+        endpoint = `/tv/${movieId}/videos`
+      } else {
+        endpoint = `/movie/${movieId}/videos`
+      }
+
+      fetchDataFromApi(endpoint).then((res) => {
         const trailerData = res.results.filter(
           (data) => data.name === "Official Trailer"
         );
@@ -67,8 +74,6 @@ const Card = ({ title, overview, img, backdropImg, movie }) => {
         console.error("Error fetching trailer data:", error);
       })
     };
-// console.log(movie);    
-// || "Official Trailer [ENG SUB]"
 
   return (
     <>

@@ -9,7 +9,6 @@ const TrailerModal = () => {
   const dispatch = useDispatch();
   const trailerVideo = useSelector((store) => store.data.trailerVideo);
 
-  console.log(trailerVideo);
   const closeTrailer = () => {
     dispatch(getTrailerVideo(""));
   };
